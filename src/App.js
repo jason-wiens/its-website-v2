@@ -1,7 +1,8 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import { LeftSideBar } from './components/side-bar-left/side-bar-left.component';
+import LeftSideBar from './components/side-bar-left/side-bar-left.component'
+import HomePage from './pages/home-page/home-page.component'
 
 import './App.css';
 
@@ -22,7 +23,10 @@ class App extends React.Component {
           sectionTitle={this.state.sectionTitle}
           logoVersion={this.state.logoVersion}
         />
-        <div class='spacer' />
+        <div className='spacer' />
+        <Switch>
+          <Route exact path='/' component={HomePage} />
+        </Switch>
         
       </div>
     )

@@ -1,7 +1,9 @@
 import React from 'react';
 
-export const Logo = ({ version }) => (
+import './logo.styles.scss'
+
+const Logo = ({ version }) => (
   <div>{version}</div>
 );
 
-// export default Logo;
+export default Logo;
