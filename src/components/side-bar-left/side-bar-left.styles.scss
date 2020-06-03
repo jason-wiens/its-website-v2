@@ -1,7 +1,22 @@
-.container {
-    width: 100px;
+.side-bar-left {
+    max-width: 176px;
+    width: 10%;
+    min-width: 120px;
     height: 100vh;
-    background-color: yellow;
-    opacity: 0.5;
-    position: absolute;
+    top: 0;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 32px;
+    z-index: 101;
+
+    @media screen and (max-width: 800px) {
+        padding: 16px;
+        min-width: 96px;
+    }
+
+    @media screen and (max-width: 500px) {
+        min-width: 76px;
+    }
 }

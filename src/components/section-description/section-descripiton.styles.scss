@@ -1,0 +1,21 @@
+.section-description {
+  width: 200px;
+  font-size: 24px;
+  transform: rotateZ(-90deg) translateX(-24px);
+  transform-origin: top left;
+
+  @media screen and (max-width: 1400px) {
+    font-size: 20px;
+    transform: rotateZ(-90deg) translateX(-20px);
+  }
+
+  @media screen and (max-width: 1000px) {
+    font-size: 16px;
+    transform: rotateZ(-90deg) translateX(-16px);
+  }
+
+  @media screen and (max-width: 800px) {
+    font-size: 12px;
+    transform: rotateZ(-90deg) translateX(-12px);
+  }
+}

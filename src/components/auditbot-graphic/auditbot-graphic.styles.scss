@@ -1,0 +1,346 @@
+$gray: #2c2f32;
+$orange: #f56d23;
+$green: #3ffa2a;
+$dark-blue: #070039;
+
+.auditbot-graphic {
+  width: 500px;
+  height: 647px;
+  position: relative;
+
+  button {
+    position: absolute;
+    left: -500px;
+
+    &.stop {
+      top: 32px;
+    }
+  }
+
+  .back-page {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: -64px;
+    left: -64px;
+    background-color: white;
+    box-shadow: 0 16px 48px 0 rgba(0,0,0,.08);
+    z-index: -10;
+  }
+
+  .front-page-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    .wrong-uwi, 
+    .wrong-admin, 
+    .good-1, 
+    .good-2, 
+    .good-3, 
+    .good-4 {
+      position: absolute;
+      z-index: 10;
+      color: $green;
+    }
+
+    .wrong-uwi {
+      top: 280px;
+      left: 200px;
+      color: red;
+    }
+
+    .wrong-admin {
+      top: 345px;
+      left: 130px;
+      color: red;
+    }
+
+    .good-1 {
+      top: 163px;
+      left: 235px;
+    }
+
+    .good-2 {
+      top: 248px;
+      left: 445px;
+    }
+
+    .good-3 {
+      top: 315px;
+      left: 445px;
+    }
+
+    .good-4 {
+      top: 380px;
+      left: 445px;
+    }
+
+    .cross {
+      opacity: 1;
+      position: absolute;
+      color: $orange;
+      z-index: 10;
+      // top: 350px !important;
+      // left: 140px !important;
+      // transform: translate3d(0,0,0) !important;
+      
+    }
+
+    .corners {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      .corner {
+        width: 48px;
+        height: 48px;
+        position: absolute;
+      }
+
+      .left-top {
+        top: 0;
+        left: 0;
+        border-left: solid 4px $gray;
+        border-top: solid 4px $gray;
+      }
+
+      .right-top {
+        top: 0;
+        right: 0;
+        border-right: solid 4px $gray;
+        border-top: solid 4px $gray;
+      }
+
+      .left-bottom {
+        bottom: 0;
+        left: 0;
+        border-left: solid 4px $gray;
+        border-bottom: solid 4px $gray;
+      }
+
+      .right-bottom {
+        bottom: 0;
+        right: 0;
+        border-right: solid 4px $gray;
+        border-bottom: solid 4px $gray;
+      }
+    }
+
+    .invoice {
+      width: 100%;
+      height: 100%;
+      background-color: white;
+      box-shadow: 0 16px 48px 0 rgba(0,0,0,.08);
+      padding: 32px;
+      font-size: 11px;
+      line-height: 14px;
+      
+      .inv-content {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        
+        .top {
+          width: 100%;
+          height: 30%;
+          display: flex;
+          justify-content: space-between;
+          
+          .left {
+            width: 40%;
+
+            .inv-logo {
+              font-size: 32px;
+              font-weight: bold;
+              margin-bottom: 16px;
+            }
+          }
+
+          .right {
+            width: 59%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            .inv-data, .inv-uwi {
+              text-align: right;
+            }
+          }
+        }
+
+        .middle {
+          width: 100%;
+
+          .inv-row {
+            width: 100%;
+            display: flex;
+            padding: 6px 0;
+            border-bottom: solid 1px $gray;
+            margin-top: 6px;
+
+            &.inv-header {
+              margin-top: 32px;
+              font-weight: bold;
+              background-color: #f2f2f2;
+              border: solid 1px $gray;
+            }
+
+            .inv-item-description {
+              width: 54%;
+              padding-left: 6px
+            }
+
+            .inv-qty, .inv-unit-cost, .inv-amount {
+              width: 15%;
+              text-align: center;
+            }
+
+            .inv-amount {
+              text-align: right;
+            }
+
+            &.inv-total-row {
+              justify-content: space-between;
+              font-weight: bold;
+
+              .total {
+                padding-left: 6px;
+              }
+              
+              .total-amt {
+                padding-right: 6px;
+              }
+            }
+          }
+        }
+
+        .bottom {
+          width: 100%;
+          text-align: center;
+          margin-top: 128px;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 1440px) {
+    width: 300px;
+    height: 388px;
+
+
+    .back-page {
+      left: -32px;
+      top: -32px;
+    }
+
+    .front-page-container {
+
+      .wrong-uwi {
+        top: 155px;
+        left: 125px;
+        color: red;
+      }
+  
+      .wrong-admin {
+        top: 205px;
+        left: 105px;
+        color: red;
+      }
+  
+      .good-1 {
+        top: 80px;
+        left: 105px;
+      }
+  
+      .good-2 {
+        top: 132px;
+        left: 275px;
+      }
+  
+      .good-3 {
+        top: 185px;
+        left: 275px;
+      }
+  
+      .good-4 {
+        top: 225px;
+        left: 275px;
+      }
+
+      .corners {
+  
+        .corner {
+          width: 24px;
+          height: 24px;
+        }
+  
+        .left-top {
+          border-left: solid 2px $gray;
+          border-top: solid 2px $gray;
+        }
+  
+        .right-top {
+          border-right: solid 2px $gray;
+          border-top: solid 2px $gray;
+        }
+  
+        .left-bottom {
+          border-left: solid 2px $gray;
+          border-bottom: solid 2px $gray;
+        }
+  
+        .right-bottom {
+          border-right: solid 2px $gray;
+          border-bottom: solid 2px $gray;
+        }
+      }
+
+      .invoice {
+        padding: 16px;
+        font-size: 9px;
+        line-height: 11px;
+
+        .inv-content {
+          display: block;
+          
+          .top {
+            height: 90px;
+            
+            .left {
+  
+              .inv-logo {
+                font-size: 16px;
+                margin-bottom: 8px;
+              }
+            }
+          }
+
+          .middle {
+
+            .inv-row {
+              padding: 3px 0;
+              margin-top: 3px;
+  
+              &.inv-header {
+                margin-top: 16px;
+              }
+            }
+          }
+
+          .bottom {
+            margin-top: 80px;
+          }
+
+
+
+        }
+      }
+    }
+
+  }
+}

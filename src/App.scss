@@ -1,0 +1,92 @@
+$orange: #f56d23;
+$dark-blue: #070039;
+$gray: #2c2f32;
+$sans: 'Open Sans', sans-serif;
+$sans-condensed: 'Open Sans Condensed', sans-serif;
+
+* {
+  box-sizing: border-box;
+}
+.app {
+}
+
+.spacer {
+  background-color: aqua;
+  width: 50px;
+  height: 2500px;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  // overflow-x: hidden;
+  color: $dark-blue;
+  z-index: -1000000;
+  position: relative;
+}
+
+.overflow-wrapper {
+  overflow-x: hidden;
+  position: relative;
+  z-index: -1000000;
+  position: relative;
+
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+ul, li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+p {
+  font-size: 24px;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5 {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.orange {
+  color: $orange;
+}
+.blue {
+  color: $dark-blue;
+}
+.white {
+  color: white;
+}
+
+button {
+  // position: relative;
+  // z-index: 1000;
+  border: solid 2px $orange;
+  padding: 8px 32px;
+  background-color: white;
+  font-family: $sans;
+  font-size: 1.25rem;
+  outline: none;
+  transition: all 0.35s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    border: solid 2px $dark-blue;
+    background-color: $dark-blue;
+    color: white;
+  }
+
+  @media screen and (max-width: 1440px) {
+    font-size: 1rem;
+    padding: 6px 24px
+  }
+
+}
+

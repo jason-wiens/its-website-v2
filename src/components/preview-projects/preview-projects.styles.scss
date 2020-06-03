@@ -1,0 +1,141 @@
+$orange: #f56d23;
+$dark-blue: #070039;
+$gray: #2c2f32;
+$sans: 'Open Sans', sans-serif;
+$sans-condensed: 'Open Sans Condensed', sans-serif;
+
+.preview-projects {
+  width: 100%;
+  margin-bottom: 320px;
+
+  @media screen and (max-width: 2000px) {
+    margin-bottom: 240px;
+  }
+
+  @media screen and (max-width: 1440px) {
+    margin-bottom: 160px;
+  }
+
+  @media screen and (max-width: 900px) {
+    margin-bottom: 80px;
+  }
+
+  .sub-title-container {
+    position: relative;
+    left: 40%;
+    color: $orange;
+    display: flex;
+    align-items: center;
+
+    .line {
+      width: 10vw;
+      border-bottom: solid 1px $orange;
+    }
+
+    h3.text {
+      font-size: 1.25rem;
+      font-family: $sans;
+      font-weight: 400;
+      line-height: 30px;
+      margin-left: 16px;
+      overflow: hidden;
+
+      @media screen and (max-width: 1440px) {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .content-container {
+    width: 100%;
+    margin-top: 240px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .graghic-container {
+      padding-left: 96px;
+    }
+
+    .content {
+      width: 500px;
+      margin-left: 160px;
+      padding: 32px;
+
+      h1.title {
+        font-size: 1.25rem;
+        font-family: $sans;
+        color: $orange;
+        font-weight: 400;
+      }
+
+      .description {
+        font-size: 2rem;
+        color: $gray;
+        margin: 24px 0;
+      }
+
+      p.text {
+        font-size: 1.25rem;
+        color: $gray;
+        margin-bottom: 32px;
+      }
+    }
+
+    @media screen and (max-width: 1700px) {
+      margin-top: 180px;
+
+      .content {
+        margin-left: 80px;
+      }
+    }
+
+    @media screen and (max-width: 1440px) {
+      margin-top: 64px;
+
+      .graghic-container {
+        padding-left: 48px;
+      }
+
+      .content {
+        width: 375px;
+  
+        h1.title {
+          font-size: 1rem;
+        }
+  
+        .description {
+          font-size: 1.5rem;
+          margin: 16px 0;
+        }
+  
+        p.text {
+          font-size: 1rem;
+        }
+      }
+    }
+
+    @media screen and (max-width: 970px) {
+      flex-wrap: wrap;
+      margin-top: 80px;
+
+      .graghic-container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .content {
+        margin-left: 0;
+        margin-top: 80px;
+      }
+    }
+
+    @media screen and (max-width: 501px) {
+
+      .graghic-container {
+        padding-left: 0;
+      }
+    }
+  }
+}

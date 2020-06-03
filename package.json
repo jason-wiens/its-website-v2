@@ -9,12 +9,18 @@
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-intersection-observer": "^8.26.2",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
+    "react-scroll": "^1.7.16",
+    "react-spring": "^8.0.27",
+    "react-waypoint": "^9.0.2",
+    "react-with-gesture": "^4.0.8",
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
     "reselect": "^4.0.0",
+    "resize-observer-polyfill": "^1.5.1",
     "styled-components": "^5.1.0"
   },
   "scripts": {

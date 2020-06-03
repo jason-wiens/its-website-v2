@@ -1,0 +1,29 @@
+$orange: #f56d23;
+$dark-blue: #070039;
+
+.social-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  transition: color 0.25s;
+
+  .blue {
+    color: $dark-blue;
+  }
+
+  .orage {
+    color: $orange;
+  }
+
+  .white {
+    color: white;
+  }
+
+  .fa-linkedin {
+    margin-bottom: 16px;
+
+    @media screen and (max-width: 800px) {
+      margin-bottom: 12px;
+    }
+  }
+}

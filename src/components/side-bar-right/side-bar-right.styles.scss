@@ -1,0 +1,15 @@
+.side-bar-right {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 32px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 101;
+
+  @media screen and (max-width: 800px) {
+    padding: 16px;
+}
+}
