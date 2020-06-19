@@ -18,7 +18,7 @@ const PreviewServices = ({ history }) => {
 
   const img = () => (
     <img 
-      srcset={`${img2800} 2800w,
+      srcSet={`${img2800} 2800w,
               ${img1800} 1800w,
               ${img900} 900w,
               ${img400} 400w`}

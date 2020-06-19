@@ -13,7 +13,7 @@ const sizes = "(min-width: 600px) 100vw, 30vw"
 
 const rpaImg = () => (
   <img 
-    srcset={`${rpaImg800} 800w,
+    srcSet={`${rpaImg800} 800w,
             ${rpaImg400} 400w`}
     sizes={sizes}      
     src={rpaImg800} 
@@ -23,7 +23,7 @@ const rpaImg = () => (
 
 const bcImg = () => (
   <img 
-    srcset={`${bcImg800} 800w,
+    srcSet={`${bcImg800} 800w,
             ${bcImg400} 400w`}
     sizes={sizes}      
     src={bcImg800} 
@@ -33,7 +33,7 @@ const bcImg = () => (
 
 const consultImg = () => (
   <img 
-    srcset={`${consultImg800} 800w,
+    srcSet={`${consultImg800} 800w,
             ${consultImg400} 400w`}
     sizes={sizes}      
     src={consultImg800} 

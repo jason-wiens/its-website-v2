@@ -19,7 +19,7 @@ const PreviewAi = () => {
   
   const img = () => (
     <img 
-      srcset={`${aiImgLrg} 1200w,
+      srcSet={`${aiImgLrg} 1200w,
               ${aiImgMed} 800w,
               ${aiImgSml} 400w`}
       sizes="(min-width: 600px) 100vw,

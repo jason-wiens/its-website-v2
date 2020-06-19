@@ -43,7 +43,7 @@ const AuditbotGraphic = () => {
     reset: true
     
   })
-  console.log(width)
+
   const crossRange = [0, 0.2, 0.8, 1.4, 2, 2.6, 10]
   let crossOutputX = []
   let crossOutputY = []
@@ -56,19 +56,19 @@ const AuditbotGraphic = () => {
   }
 
   const good = {
-    'background-color': x.interpolate({
+    'backgroundColor': x.interpolate({
       range: [0, 3.1, 3.4, 10],
       output: ['#FFFFFF', '#FFFFFF', '#3ffa2a', '#3ffa2a']
     }).interpolate(x => x),
-    'border-radius': '4px'
+    'borderRadius': '4px'
   }
 
   const bad = {
-    'background-color': x.interpolate({
+    'backgroundColor': x.interpolate({
       range: [0, 3.1, 3.4, 10],
       output: ['white', 'white', 'red', 'red']
     }).interpolate(x => x),
-    'border-radius': '4px'
+    'borderRadius': '4px'
   }
 
   const showValidation = {
@@ -113,7 +113,7 @@ const AuditbotGraphic = () => {
             }).interpolate(x => x)
           }}
         >
-          <i class={`fas ${(width < 1440) ? 'fa-2x' : 'fa-3x'} fa-crosshairs`}></i>
+          <i className={`fas ${(width < 1440) ? 'fa-2x' : 'fa-3x'} fa-crosshairs`}></i>
         </animated.div>
         <animated.div 
           className="corners"

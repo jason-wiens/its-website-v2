@@ -1,7 +1,8 @@
 $orange: #f56d23;
 $dark-blue: #070039;
-
-$animation-speed: 0.35s;
+$gray: #2c2f32;
+$sans: 'Open Sans', sans-serif;
+$sans-condensed: 'Open Sans Condensed', sans-serif;
 
 .menu-container {
   width: 100%;
@@ -15,14 +16,18 @@ $animation-speed: 0.35s;
     position: absolute;
     left: 0;
     top: 0;
-    width: 30%;
+    width: 70%;
+    max-width: calc(100% - 701px);
     height: 100vh;
-    transform: translateX(-100%);
+    will-change: transform;
     background-color: $dark-blue;
-    transition: transform $animation-speed ease-in-out;
+    z-index: 102;
+    display: flex;
+    justify-content: flex-end;
 
-    &.toggle {
-      transform: translateX(0)
+    .particles-container {
+      width: 90%;
+      height: 100%;
     }
   }
 
@@ -30,20 +35,53 @@ $animation-speed: 0.35s;
     position: absolute;
     right: 0;
     top: 0;
-    width: 70%;
+    width: 30%;
+    min-width: 700px;
     height: 100vh;
-    transform: translateX(100%);
-    background-color: $orange;
-    transition: transform $animation-speed ease-in-out;
+    background-color: white;
+    will-change: transform;
 
-    &.toggle {
-      transform: translateX(0)
-    }
+    ul.menu {
+      position: relative;
+      top: 50%;
+      left: 64px;
+      transform: translateY(-50%);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
 
-    .menu {
-
-      .menu-item {
+      li.menu-item {
         cursor: pointer;
+        font-size: 2rem;
+        letter-spacing: 1px;
+        font-weight: 300;
+        margin-bottom: 16px;
+        transition: color 0.35s;
+        position: relative;
+        // color: white;
+
+        .underline {
+          position: absolute;
+          height: 1px;
+          width: 100%;
+          bottom: -3px;
+          left: 0;
+          background-color: $orange;
+          will-change: transform;
+          transform: scale(0,1);
+          transform-origin: left;
+          transition: transform 0.35s ease-out;
+        }
+
+        &:hover {
+          color: $orange;
+
+          & .underline {
+            transform: scale(1,1);
+          }
+
+        }
       }
     }
 

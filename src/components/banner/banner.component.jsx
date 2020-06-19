@@ -17,23 +17,33 @@ import './banner.styles.scss'
 
 const Banner = ({ setLogoColor }) => {
   const { width, height } = useWindowSize()
+  const [oldVideoSrc, changeOldVideoSrc] = useState(video1440x1080)
 
-  const ratio = width / height
-  let src = video820x420
+  let src = oldVideoSrc
 
-  if(ratio < 1) {
-    src = (width > 600) ? video810x1080 : video420x820
-  } else {
-    if (width > 1800) { src = video1920x1080 } else
-    if (width > 1200) { src = video1440x1080 } else
-    if (width > 900) { src = video1080x810 }
+  const changeVideoSrc = (newSrc) => {
+    console.log('video change ', newSrc)
+    src = newSrc
+    changeOldVideoSrc(newSrc)
   }
-
+  
+  if(width / height < 1) {
+    if (width > 600) {
+      if (oldVideoSrc !== video810x1080) { changeVideoSrc(video810x1080) }
+    } else {
+      if (oldVideoSrc !== video420x820) { changeVideoSrc(video420x820) }
+    }
+  } else {
+    if (width > 1800) { if (oldVideoSrc !== video1920x1080) { changeVideoSrc(video1920x1080) }  } else
+    if (width > 1200) { if (oldVideoSrc !== video1440x1080) { changeVideoSrc(video1440x1080) } } else
+    if (width > 900) { if (oldVideoSrc !== video1080x810) { changeVideoSrc(video1080x810) } } else
+    { if (oldVideoSrc !== video820x420) { changeVideoSrc(video820x420) } }
+  }
 
   return (
     <section className='banner'>
       <div className='banner-video'>
-        <video autoPlay playsInline loop id="header-video">
+        <video autoPlay playsInline muted loop id="header-video" key={src}>
           <source id="video-mp4" src={src} type="video/mp4" />
         </video>
         <div className='banner-text'>
@@ -41,6 +51,12 @@ const Banner = ({ setLogoColor }) => {
           <h2 className='slogan'>Developing Trust Through Technology</h2>
         </div>
       </div>
+      <Waypoint 
+        scrollableAncestor={window}
+        bottomOffset='0px' 
+        onEnter={() => {setLogoColor('white-orange')}} 
+        onLeave={() => {setLogoColor('blue-orange')}} 
+      />
     </section>
   )
 }

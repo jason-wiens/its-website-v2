@@ -4,6 +4,7 @@ import { createStructuredSelector } from 'reselect'
 import { withRouter } from 'react-router-dom'
 
 import { selectLogoColor } from '../../redux/element-props/element-props.selector'
+import { selectMobileHidden } from '../../redux/mobile-menu/mobile-menu.selector'
 
 import logoWhite from '../../assets/logo/logo - white.svg'
 import logoOrange from '../../assets/logo/logo - orange.svg'
@@ -14,7 +15,7 @@ import logoWhiteOrange from '../../assets/logo/logo - white-orange.svg'
 
 import './main-logo.styles.scss'
 
-const MainLogo = ({ logoColor, history }) => {
+const MainLogo = ({ logoColor, hidden, history }) => {
 
   let src = logoBlueOrange
 
@@ -43,7 +44,7 @@ const MainLogo = ({ logoColor, history }) => {
   
   return (
     <div className='main-logo'>
-      <div className='logo-container' onClick={() => history.push('/')}>
+      <div className={`logo-container ${hidden ? '' : 'mobile'}`} onClick={() => history.push('/')}>
         <img src={src} alt='Logo' />
       </div>
     </div>
@@ -51,7 +52,8 @@ const MainLogo = ({ logoColor, history }) => {
   }
 
 const mapStateToProps = createStructuredSelector({
-  logoColor: selectLogoColor
+  logoColor: selectLogoColor,
+  hidden: selectMobileHidden
 })
 
 export default withRouter(connect(mapStateToProps)(MainLogo));
