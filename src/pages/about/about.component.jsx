@@ -1,55 +1,30 @@
-// import React from 'react'
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
 
-// import './about.styles.scss'
+import { setSectionTitleText } from '../../redux/element-props/element-props.actions'
 
-// const AboutPage = () => (
-//   <div className='about-page'>
-//     <span className='placeholder'>About</span>
-//   </div>
-// )
+import ComingSoon from '../../components/coming-soon/coming-soon.component.jsx'
 
-// export default AboutPage
+import './about.styles.scss'
 
-// import React, { useRef } from 'react'
-// import { useInView } from 'react-intersection-observer'
+const AboutPage = ({ setSectionTitleText }) => {
+  
+  useEffect(() => {
+    setSectionTitleText('About Us')
+  }, [])
 
-// import './about.styles.scss'
-
-// const AboutPage = () => {
-//   const [ref, inView, entry] = useInView({
-//     /* Optional options */
-//     threshold: 0,
-//   })
-
-//   return (
-//     <div>
-//       <div className='test-head' ref={ref}>Header</div>
-//       <h2 className='test'>{`Header inside viewport ${inView}.`}</h2>
-//       <div className='spacer'></div>
-//     </div>
-//   )
-// }
-
-// export default AboutPage
-
-import React from 'react'
-import { useInView } from 'react-intersection-observer'
-import { useSpring, animated } from 'react-spring'
-
-const AboutPage = () => {
-  const [ref, inView] = useInView({
-    rootMargin: '-100px 0px',
-  })
-  const props = useSpring({ opacity: inView ? 1 : 0 })
   return (
-    <div>
-      <div className='spacer'></div>
-      <animated.div ref={ref} style={props}>
-        <span>Hello</span>
-      </animated.div>
-      
+    <div className='about-page'>
+      <ComingSoon 
+        sectionTitle='About Us'
+        sectionText='We are working hard to bring additional content to our website. Thank you for your patience. If you would like additional information on our products and services we would be happy to buy you a coffee and have a conversation. Please contact us!'
+      />
     </div>
   )
 }
 
-export default AboutPage
+const mapDispatchToProps = dispatch => ({
+  setSectionTitleText: text => dispatch(setSectionTitleText(text))
+})
+
+export default connect(null, mapDispatchToProps)(AboutPage)

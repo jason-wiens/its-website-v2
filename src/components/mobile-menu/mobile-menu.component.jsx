@@ -1,24 +1,26 @@
-import React, { useRef } from 'react'
+import React, { useRef, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 import { useSpring, animated, useTrail, useChain } from 'react-spring'
 import Particles from 'react-particles-js'
 
+import { setLogoColor } from '../../redux/element-props/element-props.actions'
+
+import { selectMobileHidden } from '../../redux/mobile-menu/mobile-menu.selector'
+
 import { MENU_ITEMS } from './menu-items'
 import MenuItem from './menu-item.component'
 
-import logo from '../../assets/logo/logo - blue-orange.svg'
 
-import { selectMobileHidden } from '../../redux/mobile-menu/mobile-menu.selector'
 
 import './mobile-menu.styles.scss'
 
 
-const MobileMenu = ({ hidden }) => {
+const MobileMenu = ({ hidden, section, setLogoColor }) => {
 
   const configFast = { mass: 5, tension: 2000, friction: 200 }
-  const configSlow = { mass: 1, tension: 280, friction: 60 }
-  const configRegular = {mass: 1, tension: 170, friction: 26 }
+  // const configSlow = { mass: 1, tension: 280, friction: 60 }
+  // const configRegular = {mass: 1, tension: 170, friction: 26 }
 
   const leftPanelTransition = useRef()
   const leftPanel = useSpring({
@@ -26,11 +28,33 @@ const MobileMenu = ({ hidden }) => {
     config: configFast,
     from: {
       transform: 'translate3d(-100%,0,0)',
-      opacity: 0
+      // opacity: 0
     },
     to: {
       transform: hidden ? 'translate3d(-100%,0,0)' : 'translate3d(0%,0,0)',
+      // opacity: hidden ? 0 : 1
+    }
+  })
+
+  const titleTransition = useRef()
+  const title = useSpring({
+    ref: titleTransition,
+    from: {
+      opacity: 0
+    },
+    to: {
       opacity: hidden ? 0 : 1
+    }
+  })
+
+  const titleBarTransition = useRef()
+  const titleBar = useSpring({
+    ref: titleBarTransition,
+    from: {
+      transform: 'scale(0,0)'
+    },
+    to: {
+      transform: hidden ? 'scale(0,0)' : 'scale(1,1)'
     }
   })
 
@@ -40,11 +64,11 @@ const MobileMenu = ({ hidden }) => {
     config: configFast,
     from: {
       transform: 'translate3d(100%,0,0)',
-      opacity: 0
+      // opacity: 0
     },
     to: {
       transform: hidden ? 'translate3d(100%,0,0)' : 'translate3d(0%,0,0)',
-      opacity: hidden ? 0 : 1
+      // opacity: hidden ? 0 : 1
     }
   })
 
@@ -63,23 +87,50 @@ const MobileMenu = ({ hidden }) => {
     }
   })
 
-  useChain(hidden ? [menuItemsTransition, rightPanelTransition] : [rightPanelTransition, menuItemsTransition], [0, hidden ? 0.6 : 0.1 ])
-  useChain(hidden ? [leftPanelTransition] : [leftPanelTransition])
+  const transitionTime = 0.5
+  useChain(
+    [ { current: rightPanelTransition.current }, menuItemsTransition], 
+    hidden ? [0,0] : [0, transitionTime]
+  )
+  useChain(
+    [ { current: leftPanelTransition.current }, titleBarTransition, titleTransition],
+    hidden ? [0,0,0] : [0, transitionTime, transitionTime])
+
+  const windowWidth = window.innerWidth
+  let numParticles = 0
+  if (windowWidth > 2000) {
+    numParticles = 200
+  } else if (windowWidth > 1700) {
+    numParticles = 150
+  } else if (windowWidth > 1400) {
+    numParticles = 120
+  } else if (windowWidth > 1100) {
+    numParticles = 80
+  } else if (windowWidth > 800) {
+    numParticles = 50
+  }
+
+  useEffect(() => {
+    hidden ? setLogoColor('blue-orange') : setLogoColor('white-orange')
+  }, [hidden])
   
   return (
     <div className='menu-container'>
       <animated.div className='menu-left' style={leftPanel}>
-        <div className='particles-container'>
-          <Particles
-            height='100vh'
-            width='100%'
-            params={{
-              "particles": {
+      { 
+        hidden 
+        ? <div />
+        : <div className='particles-container'>
+            <Particles
+              height='100vh'
+              width='100%'
+              params={{
+                "particles": {
                   "number": {
-                      "value": 200
+                    "value": numParticles
                   },
                   "size": {
-                      "value": 2
+                    "value": 2
                   },
                   "color": {
                     "value": "#f56d23"
@@ -88,19 +139,22 @@ const MobileMenu = ({ hidden }) => {
                     "color": "#ffffff",
                     "opacity": 0.2
                   }
-
-              },
-              "interactivity": {
+                },
+                "interactivity": {
                   "events": {
-                      "onhover": {
-                          "enable": true,
-                          "mode": "repulse"
-                      }
+                    "onhover": {
+                      "enable": true,
+                      "mode": "repulse"
+                    }
                   }
-              }
-          }}
-              
-          />
+                }
+              }}  
+            />
+          </div>
+      }
+        <div className="title-container">
+          <animated.div className='title' style={title}>Integrity Technology Solutions</animated.div>
+          <animated.div className="bar" style={titleBar}></animated.div>
         </div>
       </animated.div>
       <animated.div className='menu-right' style={rightPanel}>
@@ -120,15 +174,8 @@ const mapStateToProps = createStructuredSelector({
   hidden: selectMobileHidden
 })
 
-export default connect(mapStateToProps)(MobileMenu)
+const mapDispatchToProps = dispatch => ({
+  setLogoColor: logoColor => dispatch(setLogoColor(logoColor))
+})
 
-// params={{
-//   "particles": {
-//     "number": {
-//       "value": 400
-//     },
-//     "color": {
-//       "value": '#f56d23'
-//     }
-//   }
-// }}
+export default connect(mapStateToProps, mapDispatchToProps)(MobileMenu)

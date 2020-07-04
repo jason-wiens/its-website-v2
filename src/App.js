@@ -29,7 +29,6 @@ const App = () => (
       <Route path='/contact' component={ContactPage} />
     </Switch>
     <RightSideBar />
-    <Footer />
   </div>
 )
 

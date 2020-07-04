@@ -1,0 +1,160 @@
+$orange: #f56d23;
+$dark-blue: #070039;
+$gray: #2c2f32;
+$sans: 'Open Sans', sans-serif;
+$sans-condensed: 'Open Sans Condensed', sans-serif;
+
+$offset: 187;
+$duration: 1.4s;
+
+.contact-form-container {
+  box-shadow: 0 16px 48px 0 rgba(0,0,0,.2);
+  padding: 80px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+
+  .title {
+    font-family: $sans;
+    font-size: 2rem;
+    text-transform: uppercase;
+    color: $orange;
+    font-weight: 300;
+    margin-bottom: 32px;
+  }
+
+  .text {
+    font-size: 1.5rem;
+    color: $gray;
+    font-weight: 300;
+    margin-bottom: 32px;
+  }
+
+  @media screen and (max-width: 2000px) {
+    padding: 64px;
+
+    .title {
+      font-size: 1.5rem;
+    }
+    
+    .text {
+      font-size: 1.25rem;
+    }
+  }
+
+  @media screen and (max-width: 1440px) {
+    padding: 48px;
+
+    .title {
+      font-size: 1.25rem;
+    }
+    
+    .text {
+      font-size: 1rem;
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    padding: 32px;
+  }
+  @media screen and (max-width: 500px) {
+    padding: 24px;
+
+    .title {
+      margin-bottom: 16px;;
+    }
+  }
+
+  .spinner {
+    animation: rotator $duration linear infinite;
+  }
+  
+  @keyframes rotator {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(270deg); }
+  }
+  
+  .path {
+    stroke-dasharray: $offset;
+    stroke-dashoffset: 0;
+    transform-origin: center;
+    animation:
+      dash $duration ease-in-out infinite, 
+      colors ($duration*4) ease-in-out infinite;
+  }
+  
+  @keyframes colors {
+    0% { stroke: $dark-blue; }
+    // 25% { stroke: $orange; }
+    50% { stroke: $orange; }
+    // 75% { stroke: $orange; }
+    100% { stroke: $dark-blue; }
+  }
+  
+  @keyframes dash {
+   0% { stroke-dashoffset: $offset; }
+   50% {
+     stroke-dashoffset: $offset/4;
+     transform:rotate(135deg);
+   }
+   100% {
+     stroke-dashoffset: $offset;
+     transform:rotate(450deg);
+   }
+  }
+
+  .response-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    p {
+      width: 100%;
+      color: $gray;
+      font-size: 1.25rem;
+      text-align: center;
+      margin-bottom: 64px;
+
+      .large {
+        font-size: 2rem;
+        
+        &.success {
+          color: green;
+        }
+        &.fail {
+          color: red;
+        }
+      }
+    }
+
+    button {
+      display: block;
+
+      &.inverted {
+        margin-left: 64px;
+      }
+    }
+
+    @media screen and (max-width: 1440px) {
+      flex-direction: column;
+      
+      p {
+        font-size: 1rem;
+
+        .large {
+          font-size: 1.25rem;
+        }
+      }
+      button.inverted {
+        margin-left: 0;
+        margin-top: 32px;
+      }
+    }
+
+  }
+}

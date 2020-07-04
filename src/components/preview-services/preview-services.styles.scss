@@ -6,6 +6,9 @@ $sans-condensed: 'Open Sans Condensed', sans-serif;
 
 .preview-services {
   width: 100%;
+  background-color: white;
+  position: relative;
+  z-index: 2;
 
   .banner {
     width: 100%;

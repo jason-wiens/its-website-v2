@@ -3,6 +3,8 @@ $dark-blue: #070039;
 $gray: #2c2f32;
 $sans: 'Open Sans', sans-serif;
 $sans-condensed: 'Open Sans Condensed', sans-serif;
+$center-padding: 64px;
+$center-padding-small: 48px;
 
 .menu-container {
   width: 100%;
@@ -16,8 +18,8 @@ $sans-condensed: 'Open Sans Condensed', sans-serif;
     position: absolute;
     left: 0;
     top: 0;
-    width: 70%;
-    max-width: calc(100% - 701px);
+    width: 60%;
+    max-width: calc(100% - 1000px);
     height: 100vh;
     will-change: transform;
     background-color: $dark-blue;
@@ -29,14 +31,38 @@ $sans-condensed: 'Open Sans Condensed', sans-serif;
       width: 90%;
       height: 100%;
     }
+
+    .title-container {
+      position: absolute;
+      top: 50%;
+      right: $center-padding;
+      display: flex;
+      align-items: center;
+      transform: translateY(-50%);
+      pointer-events: none;
+
+      .title {
+        color: $orange;
+        font-size: 3rem;
+        letter-spacing: 1px;
+        font-weight: 300;
+        padding-right: $center-padding;
+      }
+
+      .bar {
+        height: 400px;
+        width: 2px;
+        background-color: $orange;
+      }
+    }
   }
 
   .menu-right {
     position: absolute;
     right: 0;
     top: 0;
-    width: 30%;
-    min-width: 700px;
+    width: 40%;
+    min-width: 1000px;
     height: 100vh;
     background-color: white;
     will-change: transform;
@@ -44,7 +70,7 @@ $sans-condensed: 'Open Sans Condensed', sans-serif;
     ul.menu {
       position: relative;
       top: 50%;
-      left: 64px;
+      left: $center-padding;
       transform: translateY(-50%);
       overflow: hidden;
       display: flex;
@@ -59,6 +85,7 @@ $sans-condensed: 'Open Sans Condensed', sans-serif;
         margin-bottom: 16px;
         transition: color 0.35s;
         position: relative;
+        // transform: translate3d(-100%,0,0);
         // color: white;
 
         .underline {
@@ -85,5 +112,134 @@ $sans-condensed: 'Open Sans Condensed', sans-serif;
       }
     }
 
+  }
+
+  @media screen and (max-width: 2000px) {
+    
+    .menu-left {
+      width: 50%;
+      max-width: 50%;
+
+      .title-container {
+
+        .title {
+          font-size: 2rem;
+          letter-spacing: 1px;
+          font-weight: 300;
+        }
+
+        .bar {
+          height: 300px;
+          width: 1px;
+        }
+      }
+    }
+
+    .menu-right {
+      width: 50%;
+      min-width: 50%;
+
+      ul.menu {
+  
+        li.menu-item {
+          font-size: 1.4rem;
+          letter-spacing: 1px;
+          font-weight: 300;
+          margin-bottom: 16px;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 1600px) {
+    
+    .menu-left {
+      width: 55%;
+      max-width: 55%;
+
+      .title-container {
+
+        .title {
+          font-size: 1.5rem;
+          letter-spacing: 0px;
+          font-weight: 300;
+        }
+
+        .bar {
+          height: 250px;
+          width: 1px;
+        }
+      }
+    }
+
+    .menu-right {
+      width: 45%;
+      min-width: 45%;
+
+      ul.menu {
+  
+        li.menu-item {
+          font-size: 1.25rem;
+          letter-spacing: 0px;
+          font-weight: 300;
+          margin-bottom: 12px;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 1060px) {
+    
+    .menu-left {
+      width: 55%;
+      max-width: 55%;
+
+      .title-container {
+        right: $center-padding-small;
+
+        .title {
+          font-size: 1rem;
+          padding-right: $center-padding-small;
+        }
+
+        .bar {
+          height: 200px;
+          width: 1px;
+        }
+      }
+    }
+
+    .menu-right {
+
+      ul.menu {
+        left: $center-padding-small;
+  
+        li.menu-item {
+          font-size: 1rem;
+          margin-bottom: 12px;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    
+    .menu-left {
+      display: none;
+    }
+
+    .menu-right {
+      min-width: 100%;
+
+      ul.menu {
+        left: 0;
+        margin-left: 25%;
+  
+        li.menu-item {
+          font-size: 1rem;
+          margin-bottom: 12px;
+        }
+      }
+    }
   }
 }

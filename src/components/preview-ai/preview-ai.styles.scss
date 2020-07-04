@@ -1,9 +1,18 @@
+$orange: #f56d23;
+$dark-blue: #070039;
+$gray: #2c2f32;
+$sans: 'Open Sans', sans-serif;
+$sans-condensed: 'Open Sans Condensed', sans-serif;
+
 .preview-ai {
   width: 100%;
-  margin-bottom: 160px;
+  padding-bottom: 160px;
+  background-color: white;
+  position: relative;
+  z-index: 2;
 
-  @media screen and (max-width: 900px) {
-    margin-bottom: 80px;
+  @media screen and (max-width: 1200px) {
+    padding-bottom: 80px;
   }
   
   .content {
@@ -30,7 +39,34 @@
       justify-content: center;
 
       .text-container {
-        width: 70%;
+        width: 50%;
+
+        p {
+          font-size: 1.25rem;
+          color: $gray;
+          margin-bottom: 32px;
+
+          .large {
+            font-size: 1.75rem;
+            // margin: 24px 0;
+
+            @media screen and (max-width: 2000px) {
+              font-size: 1.25rem;
+            }
+          }
+
+        }
+
+        @media screen and (max-width: 1700px) {
+          width: 80%;
+        }
+
+        @media screen and (max-width: 1440px) {
+
+          p {
+            font-size: 1rem;
+          }
+        }
 
       }
     }

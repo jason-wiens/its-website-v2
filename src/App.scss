@@ -7,8 +7,6 @@ $sans-condensed: 'Open Sans Condensed', sans-serif;
 * {
   box-sizing: border-box;
 }
-.app {
-}
 
 .spacer {
   background-color: aqua;
@@ -86,6 +84,16 @@ button {
   @media screen and (max-width: 1440px) {
     font-size: 1rem;
     padding: 6px 24px
+  }
+
+  &.inverted {
+    border: solid 2px $dark-blue;
+
+    &:hover {
+      border: solid 2px $dark-blue;
+      background-color: $dark-blue;
+      color: $orange
+    }
   }
 
 }
